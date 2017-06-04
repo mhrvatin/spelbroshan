@@ -1,0 +1,10 @@
+<div *ngIf="rule">
+  <h2>{{rule.name}} details!</h2>
+  <div>
+    <label>id: </label>{{rule.id}}</div>
+  <div>
+    <label>name: </label>
+    <p>{{rule.name}}</p>
+  </div>
+  <button (click)="goBack()">Back</button>
+</div>
