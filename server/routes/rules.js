@@ -1,32 +1,20 @@
 const EXPRESS = require('express');
-const FS = require('fs');
-const PATH = require('path');
+const GET_ALL_GAMES = require('./getAllGames');
+const GET_RULE = require('./getRule');
+const TEST = require('./test');
 
 const ROUTER = EXPRESS.Router();
-const RULES_PATH = '../../rules';
-
-ROUTER.get('/:game', (req, res) => {
-  let rule = getRule(req.params.game);
-
-  res.send(rule);
-});
 
 ROUTER.get('/', (req, res) => {
-  let allGames = getAllGames();
+  let allGames = GET_ALL_GAMES();
 
   res.send(allGames);
 });
 
-function getAllGames() {
-  let dir = PATH.join(__dirname, RULES_PATH);
+ROUTER.get('/:game', (req, res) => {
+  let rule = GET_RULE(req.params.game);
 
-  return FS.readdirSync(dir, 'utf8');
-}
-
-function getRule(gameName) {
-  let filePath = PATH.join(__dirname, RULES_PATH + '/' + gameName);
-
-  return FS.readFileSync(filePath, 'utf8');
-}
+  res.send(rule);
+});
 
 module.exports = ROUTER;

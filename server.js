@@ -6,6 +6,8 @@ const BODY_PARSER = require('body-parser');
 
 // Get routes
 const RULES = require('./server/routes/rules');
+const DATABASE = require('./server/routes/db_connection');
+
 const APP = EXPRESS();
 
 // Parsers for POST data
@@ -18,6 +20,7 @@ APP.use(EXPRESS.static(PATH.join(__dirname, 'dist')));
 // Set routes
 APP.use('/rules', RULES);
 APP.use('/rules/:game', RULES); // :game is a parameter
+APP.use('/db', DATABASE);
 
 // Catch all other routes and return the index file
 APP.get('*', (req, res) => {
@@ -30,7 +33,6 @@ APP.set('port', PORT);
 
 // Create HTTP server.
 const SERVER = HTTP.createServer(APP);
-
 
  // Listen on provided port, on all network interfaces.
 SERVER.listen(PORT, () => console.log(`API running on localhost:${PORT}`));
