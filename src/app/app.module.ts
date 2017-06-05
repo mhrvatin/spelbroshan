@@ -10,7 +10,6 @@ import { AppRoutingModule }     from './app-routing.module';
 import { HttpModule} from "@angular/http";
 
 import { RuleService } from './rules/rules.service';
-import { RulesDetailsComponent } from './rules-details/rules-details.component'
 
 
 
@@ -21,7 +20,6 @@ import { RulesDetailsComponent } from './rules-details/rules-details.component'
     HomeComponent,
     GamesComponent,
     RulesComponent,
-    RulesDetailsComponent,
   ],
   imports: [
     BrowserModule,

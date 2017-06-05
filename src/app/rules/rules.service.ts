@@ -7,20 +7,21 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RuleService {
-    rules: Rule[] = [];
-
+    addressRules:string;
     constructor(private http: Http) {
-
+        this.addressRules = 'http://localhost:3000/rules';
     }
 
     getRules() { //get all rules
-        return this.http.get('address')
-                .map(res => res.json());
+        return this.http.get(this.addressRules)
+
     }
 
-    /*getRule(id: number): Promise<Rule> {
-    return this.getRules()
-               .then(rules => rules.find(rule => rule.id === id));
-    }*/
+    getRule(name: string) {
+        let addressToRuleData = this.addressRules + '/' + name;
+
+        console.log("in get rule")
+        return  this.http.get(addressToRuleData)
+    }
 
 }
