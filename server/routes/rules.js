@@ -1,7 +1,6 @@
 const EXPRESS = require('express');
 const GET_ALL_GAMES = require('./getAllGames');
 const GET_RULE = require('./getRule');
-const TEST = require('./test');
 
 const ROUTER = EXPRESS.Router();
 

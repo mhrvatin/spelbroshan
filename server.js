@@ -18,9 +18,9 @@ APP.use(BODY_PARSER.urlencoded({ extended: false }));
 APP.use(EXPRESS.static(PATH.join(__dirname, 'dist')));
 
 // Set routes
-APP.use('/rules', RULES);
-APP.use('/rules/:game', RULES); // :game is a parameter
-APP.use('/db', DATABASE);
+APP.use('/api/rules', RULES);
+APP.use('/api/rules/:game', RULES); // :game is a parameter
+APP.use('/api/db', DATABASE);
 
 // Catch all other routes and return the index file
 APP.get('*', (req, res) => {
