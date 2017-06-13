@@ -9,33 +9,30 @@ import { RuleService } from './rules.service'
   styleUrls: ['./rules.component.css']
 })
 export class RulesComponent implements OnInit {
-    rules: Rule[] = [];
-    getData: {} ;
-    ruleDetail: {};
+  rules: Rule[] = [];
+  getData: {};
+  ruleDetail: {};
 
   constructor(private rulesService: RuleService) { }
 
   ngOnInit(): void {
     this.rulesService.getRules()
       .subscribe(
-          data => this.getData = JSON.parse(data[Object.keys(data)[0]]),
-          error => console.log(error),
-          () => console.log("got rules")
+      data => this.getData = JSON.parse(data[Object.keys(data)[0]]),
+      error => console.log(error),
+      () => console.log("got rules")
       );
-      console.log("getData: " + this.getData);
+
+    console.log("getData: " + this.getData);
   }
 
-  onRuleClick(rule: string){
-    //this.ruleDetails.getRule(rule);
+  onRuleClick(rule: string) {
     this.rulesService.getRule(rule).subscribe(
-        data => this.ruleDetail = JSON.parse(data[Object.keys(data)[0]]),
-        error => console.log(error),
-        () => console.log("got rules")
+      data => this.ruleDetail = JSON.parse(data[Object.keys(data)[0]]),
+      error => console.log(error),
+      () => console.log("got rules")
     );
     console.log("detta får jag från get");
     console.log(this.ruleDetail);
   }
-  
-
-
 }

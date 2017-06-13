@@ -5,8 +5,6 @@ const DB_CONFIG = require('../db_config');
 const ROUTER = EXPRESS.Router();
 const CONNECTION = MYSQL.createConnection(DB_CONFIG);
 
-var output = 'init';
-
 ROUTER.get('/', (req, res) => {
   getAllGames().then(function (rows) {
     res.send(rows);
