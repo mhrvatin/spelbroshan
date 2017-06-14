@@ -1,20 +1,14 @@
-<div class="all-rules">
-  <h3>Rules</h3>
+<div>
+  <md-grid-list cols="3" rowHeight="3:2">
+    <md-grid-tile
+      *ngFor="let gameName of getGames"
+      (click)="onRuleClick(gameName)">
+      {{gameName}}
+    </md-grid-tile>
+  </md-grid-list>
 
-  <div class="grid grid-pad">
-    <a *ngFor="let rule of getData" (click)="onRuleClick(rule)" class="col-1-4">
-      <div class="module rule">
-        <h4>{{rule}}</h4>
-      </div>
-    </a>
-  </div>
-</div>
-<br>
-
-<div *ngIf="ruleDetail != null">
-  <h2>Spel: {{ruleDetail.name}}!</h2>
-
-  <div>
-    <label>regler: {{ruleDetail.body}}</label>
-  </div>
+  <md-card *ngIf="ruleDetail">
+    <md-card-title>{{ruleDetail.name}}</md-card-title>
+    <md-card-content>{{ruleDetail.body}}</md-card-content>
+  </md-card>
 </div>

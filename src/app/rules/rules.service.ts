@@ -1,9 +1,10 @@
-import { Rule } from './rule';
-import { RULES } from './mock-rules';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 
-import 'rxjs/add/operator/map';
+import { Rule } from './rule';
+import { RULES } from './mock-rules';
+
+import 'rxjs/add/operator/map'; // needed? /mh, 2017-06-13
 
 @Injectable()
 export class RuleService {
@@ -13,14 +14,13 @@ export class RuleService {
     this.addressRules = 'http://localhost:3000/api/rules';
   }
 
-  getRules() { // get all rules
-    return this.http.get(this.addressRules)
+  getAllRules() { // get all rules
+    return this.http.get(this.addressRules);
   }
 
-  getRule(name: string) {
-    let addressToRuleData = this.addressRules + '/' + name;
+  getSpecificRule(gameName: string) {
+    let addressToRuleData = this.addressRules + '/' + gameName;
 
-    console.log("in get rule")
-    return this.http.get(addressToRuleData)
+    return this.http.get(addressToRuleData);
   }
 }
